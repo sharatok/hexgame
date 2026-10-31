@@ -23,7 +23,7 @@ jobs:
           - os: macos-latest
             type: dmg
             artifact: "*.dmg"
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             type: deb
             artifact: "*.deb"
 
@@ -80,7 +80,7 @@ jobs:
             --java-options "-Dfile.encoding=UTF-8"
 
       - name: Package installer (Linux)
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-24.04'
         run: |
           jpackage \
             --input target \
@@ -102,7 +102,7 @@ jobs:
   release:
     name: Publish GitHub Release
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
 
